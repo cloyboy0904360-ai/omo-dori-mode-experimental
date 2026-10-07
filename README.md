@@ -1,6 +1,8 @@
 **English** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
 
-<img src="skills/dori-mode/assets/dori-avatar.png" alt="Dori" width="120" align="right">
+<p align="center">
+  <img src="skills/dori-mode/assets/dori-avatar.png" alt="Dori" width="120">
+</p>
 
 # omo-dori-mode-experimental
 
