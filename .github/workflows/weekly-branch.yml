@@ -1,0 +1,29 @@
+name: Create weekly branch
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # every Monday at 00:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-branch
+  cancel-in-progress: false
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+
+      - name: Create and push weekly branch
+        run: |
+          BRANCH="weekly/$(date -u +%Y-%m-%d)"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            echo "Branch $BRANCH already exists; nothing to do."
+            exit 0
+          fi
+          git push origin "HEAD:refs/heads/$BRANCH"
